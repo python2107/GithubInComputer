@@ -57,9 +57,22 @@ python main.py
 }
 ```
 
+## 推送到 GitHub
+
+项目已初始化为本地 git 仓库，并包含 `push_to_github.sh` 脚本。在可连接 GitHub 的机器上运行：
+
+```bash
+cd /workspace/tkinter-github
+chmod +x push_to_github.sh
+./push_to_github.sh <你的GitHub用户名> [仓库名]
+```
+
+脚本会读取 `~/.config/tkinter-github/config.json` 中的 token，使用 `gh` 创建仓库并推送代码。
+
 ## 注意事项
 
 - 这是桌面原生 UI，视觉风格尽量接近 GitHub，但不会与 github.com 像素级一致。
 - GitHub API 有速率限制；请妥善保管 Token。
 - GitHub Copilot 的核心聊天/补全能力没有公开 REST API，因此 Copilot 页面为配置/占位页。
 - 写操作（创建仓库、Star、Fork、Push 等）会真实影响你的 GitHub 账户，请谨慎使用。
+- 当前沙箱环境无法直接连接 `github.com`（TLS 握手被网络策略中断），因此自动推送未能完成；本地仓库已准备就绪，可在你的本地机器上执行上述脚本。
